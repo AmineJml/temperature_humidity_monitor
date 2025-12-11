@@ -2,10 +2,10 @@
 
 A lightweight IoT system that reads indoor **temperature** and **humidity** using the **Sense HAT**, exposes the data through a **FastAPI backend**, and visualizes it on both a **responsive web dashboard** and the **Sense HAT LED matrix**.
 
-This project was developed collaboratively by a team of four students as part of a university course at Uppsala University. I mainly worked on the web interface that displays the sensor data. I also supported the team by keeping track of how the different parts connected. This gave me a good understanding of the overall workflow from hardware integration to backend services and visualization.
+>This project was developed collaboratively by a team of four students as part of a university course at Uppsala University. I mainly worked on the web interface that displays the sensor data. I also supported the team by keeping track of how the different parts connected. This gave me a good understanding of the overall workflow from hardware integration to backend services and visualization.
 
-For an overview of the system and its implementation, you can view the presentation below:
-🔗 **[Project Presentation](https://uppsalauniversitet-my.sharepoint.com/:p:/g/personal/amine_jamal_6361_student_uu_se/IQDBs29KwxlHSoFawKUMHvKtAVa_84CT_yUPY328Gg-RJfM?e=y1YA2M)**
+>For an overview of the system and its implementation, you can view the presentation below:
+>**[Project Presentation](https://uppsalauniversitet-my.sharepoint.com/:p:/g/personal/amine_jamal_6361_student_uu_se/IQDBs29KwxlHSoFawKUMHvKtAVa_84CT_yUPY328Gg-RJfM?e=y1YA2M)**
 
 ---
 
