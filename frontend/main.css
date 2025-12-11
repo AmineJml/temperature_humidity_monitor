@@ -1,0 +1,643 @@
+:root {
+    --primary-color: #8ab6d6;
+    --secondary-color: #f0dab1;
+    --tertiary-color: #e2c2c6;
+    --quaternary-color: #b5d8cc;
+    --text-color: #2c3e50;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --bg-color: #f9f9fb;
+    --card-color: #ffffff;
+    --slider-track: #e0e0e0;
+    --slider-fill: var(--primary-color);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    color: var(--text-color);
+    padding: 20px;
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 680px;
+    height: 480px;
+    background-color: var(--card-color);
+    border-radius: 24px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.time-display {
+    font-size: 1.6rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.date-display {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--tertiary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: white;
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+}
+
+.weather-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px;
+    background: linear-gradient(to right, var(--primary-color), var(--quaternary-color));
+    border-radius: 16px;
+    color: white;
+    box-shadow: 0 6px 12px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.weather-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px var(--shadow-color);
+}
+
+.weather-bubbles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.bubble {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    animation: float 8s infinite ease-in-out;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0) translateX(0);
+    }
+
+    50% {
+        transform: translateY(-20px) translateX(10px);
+    }
+}
+
+.weather-header {
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.temperature {
+    font-size: 3.5rem;
+    font-weight: 300;
+    z-index: 1;
+}
+
+.temp-details {
+    display: flex;
+    gap: 24px;
+    z-index: 1;
+}
+
+.weather-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.weather-detail i {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.weather-detail-value {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.weather-detail-label {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.smart-controls {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.control-card {
+    background-color: var(--card-color);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.control-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+.control-card.active {
+    border: 2px solid var(--primary-color);
+}
+
+.control-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.control-title {
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.control-card:hover .control-title {
+    color: var(--primary-color);
+}
+
+.control-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--quaternary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.control-card:hover .control-icon {
+    background-color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.control-icon i {
+    font-size: 1.3rem;
+    color: white;
+}
+
+.control-value {
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.control-slider-container {
+  position: relative;
+  width: 100%;
+  height: 28px;        /* match thumb size */
+  border-radius: 5px;
+  background: transparent;  /* we’ll draw the track separately */
+  overflow: visible;   /* <- was hidden, causes cropping */
+}
+
+/* draw the 6px track centered inside the taller container */
+.control-slider-container::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 6px;
+  background: var(--slider-track);
+  border-radius: 5px;
+  z-index: 0;
+}
+
+/* keep the fill centered on the track */
+.control-slider-fill {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 6px;
+  width: 0%;
+  border-radius: 5px;
+  background: var(--slider-fill);
+  pointer-events: none;
+  z-index: 1; /* above track */
+}
+
+/* input sits on top, transparent background */
+.control-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
+  width: 100%;
+  height: 28px;       /* match container */
+  background: transparent;
+  outline: none;
+  z-index: 2;         /* above fill */
+  cursor: grab;
+}
+.control-slider:active { cursor: grabbing; }
+
+/* thermostat thumb */
+.control-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--primary-color);
+  box-shadow: 0 3px 8px rgba(0,0,0,.15);
+  transition: transform .2s ease, box-shadow .2s ease;
+  margin-top: 0;      /* no negative offset needed now */
+}
+
+.scenes-section {
+    margin-top: 5px;
+}
+
+.section-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.scene-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 5px;
+}
+
+.scene-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.scene-tab {
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    background-color: #f0f0f0;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.scene-tab.active {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.weather-forecast {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 10px 0;
+}
+
+.weather-forecast::-webkit-scrollbar {
+    display: none;
+}
+
+.forecast-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+    padding: 15px 10px;
+    border-radius: 16px;
+    background-color: var(--card-color);
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.forecast-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+.forecast-day {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-bottom: 8px;
+}
+
+.forecast-icon {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+}
+
+.forecast-temp {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.mode-toggle {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    width: 60px;
+    height: 30px;
+    background-color: var(--card-color);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    cursor: pointer;
+    z-index: 10;
+}
+
+.toggle-thumb {
+    width: 22px;
+    height: 22px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.toggle-thumb.night {
+    transform: translateX(30px);
+    background-color: #34495e;
+}
+
+.mode-toggle i {
+    position: absolute;
+    font-size: 0.8rem;
+    transition: opacity 0.3s ease;
+}
+
+.mode-toggle .sun-icon {
+    left: 10px;
+    opacity: 1;
+}
+
+.mode-toggle .moon-icon {
+    right: 10px;
+    opacity: 0.5;
+}
+
+.night-mode .mode-toggle .sun-icon {
+    opacity: 0.5;
+}
+
+.night-mode .mode-toggle .moon-icon {
+    opacity: 1;
+}
+
+.night-mode {
+    --bg-color: #1a1a2e;
+    --card-color: #16213e;
+    --text-color: #e1e1e1;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --primary-color: #4a6fa5;
+    --slider-track: #2c2c44;
+}
+
+.gesture-hint {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 6px var(--shadow-color);
+    transition: all 0.3s ease;
+    z-index: 5;
+}
+
+.gesture-hint:hover {
+    opacity: 1;
+    transform: translateY(-5px);
+}
+
+.voice-control {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.voice-control:hover {
+    transform: scale(1.1);
+}
+
+.voice-waves {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.wave {
+    position: absolute;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    opacity: 0;
+    animation: wave 2s infinite ease-out;
+}
+
+.wave:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.wave:nth-child(3) {
+    animation-delay: 1s;
+}
+
+@keyframes wave {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.voice-active .wave {
+    animation-play-state: running;
+}
+
+.voice-inactive .wave {
+    animation-play-state: paused;
+}
+
+@media (max-width: 600px) {
+    body {
+        overflow: auto;
+    }
+
+    .container {
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+
+    .container {
+        padding: 16px;
+        border-radius: 20px;
+    }
+
+    .smart-controls {
+        grid-template-columns: 1fr;
+    }
+
+    .time-display {
+        font-size: 1.3rem;
+    }
+
+    .temperature {
+        font-size: 2.8rem;
+    }
+
+    .temp-details {
+        gap: 15px;
+    }
+
+    .weather-detail-value {
+        font-size: 1rem;
+    }
+
+    .gesture-hint,
+    .voice-control {
+        display: none;
+    }
+}
+
+/* Animation for notifications */
+@keyframes notification {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+.notification {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 100;
+    animation: notification 4s forwards;
+}
+
+.notification i {
+    font-size: 1.2rem;
+}
